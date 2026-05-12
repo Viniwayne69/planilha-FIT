@@ -538,7 +538,7 @@ body{font-family:'Open Sans',sans-serif;background:var(--bg);color:#2d1a4a;font-
 <!-- ═══ DASHBOARD ═══════════════════════════════════════════════ -->
 <section class="tab-panel active" id="tab-dashboard">
   <div class="cards" id="dash-cards"></div>
-  <div class="stitle">Graficos do Mes</div>
+  <div class="stitle">Gráficos do Mês</div>
   <div class="charts-grid">
     <div class="cbox"><h4>Vendas por Dia</h4><canvas id="ch-dias"></canvas></div>
     <div class="cbox"><h4>Entradas x Saidas</h4><canvas id="ch-es"></canvas></div>
@@ -549,14 +549,14 @@ body{font-family:'Open Sans',sans-serif;background:var(--bg);color:#2d1a4a;font-
 
 <!-- ═══ FECHAMENTO DIARIO ════════════════════════════════════════ -->
 <section class="tab-panel" id="tab-vendas">
-  <div class="instrucao">Preencha esta area no fim do dia com o resumo total das vendas realizadas.</div>
+  <div class="instrucao">Preencha esta área no fim do dia com o resumo total das vendas realizadas.</div>
   <div class="form-card" id="form-vendas">
     <div class="form-title">
       <span id="vtitle">Registrar Fechamento do Dia</span>
       <span id="vedit-badge" style="display:none;background:var(--dourado-claro);color:var(--roxo);font-size:11px;padding:3px 10px;border-radius:20px;font-weight:700">Editando</span>
     </div>
     <div class="form-grid">
-      <div class="fg"><label>Data *</label><input type="date" id="v-data"/></div>
+      <div class="fg"><label>Data</label><input type="date" id="v-data"/></div>
       <div class="fg"><label>Peças vendidas no dia</label><input type="number" id="v-pecas" min="0" placeholder="0"/></div>
       <div class="fg" style="grid-column:span 2">
         <label>Produtos / Peças vendidas</label>
@@ -564,8 +564,8 @@ body{font-family:'Open Sans',sans-serif;background:var(--bg);color:#2d1a4a;font-
       </div>
       <div class="fg"><label>PIX (R$)</label><input type="number" id="v-pix" min="0" step="0.01" placeholder="0,00" oninput="calcTotal()"/></div>
       <div class="fg"><label>Dinheiro (R$)</label><input type="number" id="v-dinheiro" min="0" step="0.01" placeholder="0,00" oninput="calcTotal()"/></div>
-      <div class="fg"><label>Cartao Debito (R$)</label><input type="number" id="v-debito" min="0" step="0.01" placeholder="0,00" oninput="calcTotal()"/></div>
-      <div class="fg"><label>Cartao Credito (R$)</label><input type="number" id="v-credito" min="0" step="0.01" placeholder="0,00" oninput="calcTotal()"/></div>
+      <div class="fg"><label>Cartão Débito (R$)</label><input type="number" id="v-debito" min="0" step="0.01" placeholder="0,00" oninput="calcTotal()"/></div>
+      <div class="fg"><label>Cartão Crédito (R$)</label><input type="number" id="v-credito" min="0" step="0.01" placeholder="0,00" oninput="calcTotal()"/></div>
       <div class="fg"><label>Outros meios (R$)</label><input type="number" id="v-outros" min="0" step="0.01" placeholder="0,00" oninput="calcTotal()"/></div>
       <div class="total-dia-box">
         <span class="total-dia-label">Total do dia (calculado automaticamente)</span>
@@ -580,7 +580,7 @@ body{font-family:'Open Sans',sans-serif;background:var(--bg);color:#2d1a4a;font-
   </div>
   <div class="table-wrap">
     <div class="table-bar">
-      <span class="table-bar-title">Fechamentos do Mes</span>
+      <span class="table-bar-title">Fechamentos do Mês</span>
       <input class="busca" type="text" placeholder="Buscar..." oninput="renderVendas(this.value)"/>
     </div>
     <div class="tscroll">
@@ -590,7 +590,7 @@ body{font-family:'Open Sans',sans-serif;background:var(--bg);color:#2d1a4a;font-
       </table>
     </div>
     <div class="totals-bar">
-      <div class="ti"><span>Total do Mes</span><span id="tv-total">R$ 0,00</span></div>
+      <div class="ti"><span>Total do Mês</span><span id="tv-total">R$ 0,00</span></div>
       <div class="ti"><span>Dias Registrados</span><span id="tv-dias">0</span></div>
       <div class="ti"><span>Total de Peças</span><span id="tv-pecas">0</span></div>
       <div class="ti"><span>Ticket Medio Diario</span><span id="tv-ticket">R$ 0,00</span></div>
@@ -608,10 +608,10 @@ body{font-family:'Open Sans',sans-serif;background:var(--bg);color:#2d1a4a;font-
       <span id="cedit-badge" style="display:none;background:var(--dourado-claro);color:var(--roxo);font-size:11px;padding:3px 10px;border-radius:20px;font-weight:700">Editando</span>
     </div>
     <div class="form-grid">
-      <div class="fg"><label>Data *</label><input type="date" id="c-data"/></div>
-      <div class="fg" style="grid-column:span 2"><label>Descrição *</label><input type="text" id="c-desc" placeholder="Ex: Compra de estoque fornecedor"/></div>
+      <div class="fg"><label>Data</label><input type="date" id="c-data"/></div>
+      <div class="fg" style="grid-column:span 2"><label>Descrição</label><input type="text" id="c-desc" placeholder="Ex: Compra de estoque fornecedor"/></div>
       <div class="fg">
-        <label>Categoria *</label>
+        <label>Categoria</label>
         <select id="c-cat">
           <option value="">Selecione...</option>
           <option>Estoque</option><option>Aluguel</option><option>Energia</option>
@@ -620,13 +620,13 @@ body{font-family:'Open Sans',sans-serif;background:var(--bg);color:#2d1a4a;font-
           <option>Transporte</option><option>Manutenção</option><option>Outros</option>
         </select>
       </div>
-      <div class="fg"><label>Valor (R$) *</label><input type="number" id="c-valor" min="0" step="0.01" placeholder="0,00"/></div>
+      <div class="fg"><label>Valor (R$)</label><input type="number" id="c-valor" min="0" step="0.01" placeholder="0,00"/></div>
       <div class="fg">
         <label>Forma de Pagamento</label>
         <select id="c-pgto">
           <option value="">Selecione...</option>
-          <option>PIX</option><option>Dinheiro</option><option>Cartao Debito</option>
-          <option>Cartao Credito</option><option>Boleto</option><option>Transferencia</option><option>Outros</option>
+          <option>PIX</option><option>Dinheiro</option><option value="Cartao Debito">Cartão Débito</option>
+          <option value="Cartao Credito">Cartão Crédito</option><option>Boleto</option><option value="Transferencia">Transferência</option><option>Outros</option>
         </select>
       </div>
       <div class="fg">
@@ -642,7 +642,7 @@ body{font-family:'Open Sans',sans-serif;background:var(--bg);color:#2d1a4a;font-
   </div>
   <div class="table-wrap">
     <div class="table-bar">
-      <span class="table-bar-title">Custos do Mes</span>
+      <span class="table-bar-title">Custos do Mês</span>
       <input class="busca" type="text" placeholder="Buscar..." oninput="renderCustos(this.value)"/>
     </div>
     <div class="tscroll">
@@ -654,7 +654,7 @@ body{font-family:'Open Sans',sans-serif;background:var(--bg);color:#2d1a4a;font-
     <div class="totals-bar">
       <div class="ti"><span>Total Custos</span><span id="tc-total">R$ 0,00</span></div>
       <div class="ti"><span>Fixos</span><span id="tc-fixos">R$ 0,00</span></div>
-      <div class="ti"><span>Variaveis</span><span id="tc-var">R$ 0,00</span></div>
+      <div class="ti"><span>Variáveis</span><span id="tc-var">R$ 0,00</span></div>
       <div class="ti"><span>Lançamentos</span><span id="tc-qtd">0</span></div>
     </div>
   </div>
@@ -668,14 +668,14 @@ body{font-family:'Open Sans',sans-serif;background:var(--bg);color:#2d1a4a;font-
   <div class="form-card">
     <div class="form-grid">
       <div class="fg"><label>Código</label><input type="text" id="e-cod" placeholder="FIT-001"/></div>
-      <div class="fg" style="grid-column:span 2"><label>Nome do Produto *</label><input type="text" id="e-nome" placeholder="Ex: Legging Preta Cintura Alta"/></div>
+      <div class="fg" style="grid-column:span 2"><label>Nome do Produto</label><input type="text" id="e-nome" placeholder="Ex: Legging Preta Cintura Alta"/></div>
       <div class="fg">
-        <label>Categoria *</label>
+        <label>Categoria</label>
         <select id="e-cat">
           <option value="">Selecione...</option>
           <option>Legging</option><option>Top</option><option>Conjunto</option>
-          <option>Shorts</option><option>Macacao</option><option>Blusa</option>
-          <option>Saia</option><option>Acessorio</option><option>Outros</option>
+          <option>Shorts</option><option value="Macacao">Macacão</option><option>Blusa</option>
+          <option>Saia</option><option value="Acessorio">Acessório</option><option>Outros</option>
         </select>
       </div>
       <div class="fg"><label>Cor</label><input type="text" id="e-cor" placeholder="Preto"/></div>
@@ -687,7 +687,7 @@ body{font-family:'Open Sans',sans-serif;background:var(--bg);color:#2d1a4a;font-
           <option>G</option><option>GG</option><option>XGG</option><option>Unico</option>
         </select>
       </div>
-      <div class="fg"><label>Qtd em Estoque *</label><input type="number" id="e-qtd" min="0" value="0"/></div>
+      <div class="fg"><label>Qtd em Estoque</label><input type="number" id="e-qtd" min="0" value="0"/></div>
       <div class="fg"><label>Preço de Custo (R$)</label><input type="number" id="e-custo" min="0" step="0.01" placeholder="0,00"/></div>
       <div class="fg"><label>Preço de Venda (R$)</label><input type="number" id="e-venda" min="0" step="0.01" placeholder="0,00"/></div>
     </div>
@@ -721,10 +721,10 @@ body{font-family:'Open Sans',sans-serif;background:var(--bg);color:#2d1a4a;font-
       <div class="rrow"><label>Total de Peças</label><span class="rval" id="r-pecas">0</span></div>
       <div class="rrow"><label>Ticket Medio Diario</label><span class="rval" id="r-ticket">R$ 0,00</span></div>
       <div class="rrow"><label>Custos Fixos</label><span class="rval" id="r-fixos">R$ 0,00</span></div>
-      <div class="rrow"><label>Custos Variaveis</label><span class="rval" id="r-var">R$ 0,00</span></div>
+      <div class="rrow"><label>Custos Variáveis</label><span class="rval" id="r-var">R$ 0,00</span></div>
     </div>
     <div class="rbox">
-      <div class="rbox-title">Destaques do Mes</div>
+      <div class="rbox-title">Destaques do Mês</div>
       <div class="rrow"><label>Melhor Dia</label><span class="rval" id="r-melhor">—</span></div>
       <div class="rrow"><label>Pior Dia</label><span class="rval" id="r-pior">—</span></div>
       <div class="rrow"><label>Pgto Mais Usado</label><span class="rval" id="r-pgto">—</span></div>
@@ -735,7 +735,7 @@ body{font-family:'Open Sans',sans-serif;background:var(--bg);color:#2d1a4a;font-
   </div>
   <div class="stitle">Metas vs Realizado</div>
   <table class="metas-table">
-    <thead><tr><th>Indicador</th><th>Meta do Mes</th><th>Realizado</th><th>Diferenca</th><th>Status</th></tr></thead>
+    <thead><tr><th>Indicador</th><th>Meta do Mês</th><th>Realizado</th><th>Diferença</th><th>Status</th></tr></thead>
     <tbody>
       <tr><td>Total Vendido (R$)</td><td><input type="number" id="m-tv" placeholder="0,00" oninput="renderMetas()" step="0.01"/></td><td id="mr-tv">—</td><td id="md-tv">—</td><td id="ms-tv">—</td></tr>
       <tr><td>Dias com Vendas</td><td><input type="number" id="m-dias" placeholder="0" oninput="renderMetas()"/></td><td id="mr-dias">—</td><td id="md-dias">—</td><td id="ms-dias">—</td></tr>
@@ -1193,7 +1193,7 @@ function renderDash() {
     <div class="card ${lucro>=0?'c-verde':'c-verm'}"><div class="clabel">Lucro Estimado</div><div class="cval ${lucro>=0?'pos':'neg'}" id="dc-lucro"></div><div class="csub">Margem: ${margem.toFixed(1)}%</div></div>
     <div class="card c-dourado"><div class="clabel">Ticket Medio Diario</div><div class="cval" id="dc-ticket"></div><div class="csub">por dia registrado</div></div>
     <div class="card"><div class="clabel">Dias com Vendas</div><div class="cval" id="dc-dias"></div><div class="csub">${pecas} peças vendidas</div></div>
-    <div class="card c-lilas"><div class="clabel">Total de Peças</div><div class="cval" id="dc-pecas"></div><div class="csub">no mes</div></div>
+    <div class="card c-lilas"><div class="clabel">Total de Peças</div><div class="cval" id="dc-pecas"></div><div class="csub">no mês</div></div>
     <div class="card c-verde"><div class="clabel">Melhor Dia</div><div class="cval" style="font-size:16px">${melhor?fmtD(melhor.data):'—'}</div><div class="csub">${melhor?BRL(melhor.total):''}</div></div>
     <div class="card"><div class="clabel">Margem Estimada</div><div class="cval ${margem>=0?'pos':'neg'}" id="dc-margem"></div><div class="csub">lucro / vendas</div></div>`;
   animarNumero(el('dc-tv'), tv, true);
