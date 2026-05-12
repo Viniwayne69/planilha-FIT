@@ -244,24 +244,61 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:#2d1a4a;
 
 /* ── MOBILE ── */
 @media(max-width:600px){
-  .header{padding:0 14px;height:56px}
-  .hlogo{font-size:17px}
+  /* Header em duas linhas */
+  .header{
+    padding:8px 14px;height:auto;flex-wrap:wrap;gap:8px;
+    display:grid;
+    grid-template-columns:1fr auto;
+    grid-template-rows:auto auto;
+    align-items:center;
+  }
+  .header > div:first-child{grid-column:1;grid-row:1}
+  .hright{
+    grid-column:2;grid-row:1 / span 2;
+    flex-direction:column;align-items:flex-end;gap:6px;margin-left:0;
+  }
+  .hlogo{font-size:16px}
   .hsub{display:none}
+  .conn-badge{padding:4px 8px}
   .conn-badge span:last-child{display:none}
-  .tab-panel{padding:14px}
+  .hmes{font-size:11px;padding:6px 8px;min-height:32px}
+  .hbtn{padding:6px 12px;font-size:11px;min-height:32px}
+  .login-user{font-size:11px}
+
+  /* Tabs */
+  .tab-btn{padding:10px 11px;font-size:11px}
+
+  /* Paineis */
+  .tab-panel{padding:12px}
+
+  /* Cards */
   .cards{grid-template-columns:1fr 1fr}
-  .cval{font-size:18px}
+  .cval{font-size:17px}
+  .clabel{font-size:9px}
+
+  /* Forms */
   .form-grid{grid-template-columns:1fr}
   .total-dia-box{grid-column:span 1}
+  .form-btns{flex-direction:column}
+  .btn-salvar{max-width:100%}
+
+  /* Charts */
   .charts-grid{grid-template-columns:1fr}
+
+  /* Resumo */
   .resumo-grid{grid-template-columns:1fr}
+
+  /* Totals bar */
   .totals-bar{flex-direction:column}
   .ti{border-right:none;border-bottom:1px solid rgba(255,255,255,.15)}
   .ti:last-child{border-bottom:none}
-  .form-btns{flex-direction:column}
-  .btn-salvar{max-width:100%}
-  .tab-btn{padding:12px 13px;font-size:12px}
-  .modal-body,.modal-footer{padding-left:18px;padding-right:18px}
+
+  /* Login */
+  .login-box{padding:32px 24px}
+  .login-logo{font-size:22px}
+
+  /* Boas vindas */
+  .bv-texto{font-size:clamp(28px,10vw,48px)}
 }
 </style>
 </head>
