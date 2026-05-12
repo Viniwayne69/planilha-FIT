@@ -242,6 +242,72 @@ body{font-family:'Open Sans',sans-serif;background:var(--bg);color:#2d1a4a;font-
 /* ── FOOTER ── */
 .footer{background:var(--roxo);color:var(--dourado);text-align:center;padding:14px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-top:40px}
 
+/* ── EFEITOS 3D E PREMIUM ── */
+
+/* 4. Header solido premium */
+.header{
+  background:linear-gradient(135deg,#2a0055 0%,#4B0082 50%,#6a1aaa 100%) !important;
+  box-shadow:0 4px 28px rgba(42,0,85,.55),0 1px 0 rgba(255,255,255,.06) inset;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.conn-badge{
+  background:rgba(0,0,0,.22);
+  border:1px solid rgba(255,255,255,.18) !important;
+}
+.conn-dot.on{box-shadow:0 0 0 3px rgba(76,250,126,.25),0 0 8px #4cfa7e}
+.hmes{
+  background:rgba(0,0,0,.22) !important;
+  border:1px solid rgba(255,255,255,.2) !important;
+  border-radius:20px !important;
+  font-weight:600;
+}
+.hbtn-sair{
+  background:rgba(255,255,255,.12) !important;
+  border:1.5px solid rgba(255,255,255,.3) !important;
+  border-radius:20px;
+  font-weight:700;
+  letter-spacing:.04em;
+}
+.hbtn-sair:hover{background:rgba(255,255,255,.24) !important}
+
+/* 2. Logo sem 3D */
+.hlogo{
+  text-shadow:0 2px 14px rgba(212,175,55,.35);
+  transition:text-shadow .3s ease;
+}
+.hlogo:hover{
+  text-shadow:0 2px 22px rgba(212,175,55,.6);
+}
+
+
+/* 1. Card Tilt 3D */
+.cards-3d{perspective:1000px}
+.card{transform-style:preserve-3d;will-change:transform}
+
+/* 3. Botao press 3D */
+.btn-salvar{
+  box-shadow:0 6px 0 rgba(30,0,70,.4),0 8px 16px rgba(75,0,130,.3);
+  transform:translateY(0);
+  transition:transform .1s ease,box-shadow .1s ease,background .2s;
+}
+.btn-salvar:active{
+  transform:translateY(4px) !important;
+  box-shadow:0 2px 0 rgba(30,0,70,.4),0 4px 8px rgba(75,0,130,.2) !important;
+}
+
+/* 5. Slide entre abas */
+.tab-panel.active{animation:none}
+.tab-panel.slide-in-right{animation:slideInRight .32s cubic-bezier(.25,.46,.45,.94) both}
+.tab-panel.slide-in-left{animation:slideInLeft .32s cubic-bezier(.25,.46,.45,.94) both}
+@keyframes slideInRight{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slideInLeft{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:translateX(0)}}
+
+/* 8. Toast com checkmark */
+.toast{display:flex;align-items:center;gap:10px;padding:13px 20px}
+.toast-icon{width:20px;height:20px;flex-shrink:0}
+.toast-check{stroke-dasharray:30;stroke-dashoffset:30;animation:drawCheck .5s .1s ease forwards}
+@keyframes drawCheck{to{stroke-dashoffset:0}}
+
 /* ── ANIMACOES ── */
 
 /* 1. Cascata de cards */
@@ -489,9 +555,9 @@ body{font-family:'Open Sans',sans-serif;background:var(--bg);color:#2d1a4a;font-
     </div>
     <div class="form-grid">
       <div class="fg"><label>Data *</label><input type="date" id="v-data"/></div>
-      <div class="fg"><label>Pecas vendidas no dia</label><input type="number" id="v-pecas" min="0" placeholder="0"/></div>
+      <div class="fg"><label>Peças vendidas no dia</label><input type="number" id="v-pecas" min="0" placeholder="0"/></div>
       <div class="fg" style="grid-column:span 2">
-        <label>Produtos / Pecas vendidas</label>
+        <label>Produtos / Peças vendidas</label>
         <textarea id="v-produtos" placeholder="Ex: 3 leggings pretas G, 2 tops roxos M, 1 conjunto floral P"></textarea>
       </div>
       <div class="fg"><label>PIX (R$)</label><input type="number" id="v-pix" min="0" step="0.01" placeholder="0,00" oninput="calcTotal()"/></div>
@@ -503,11 +569,11 @@ body{font-family:'Open Sans',sans-serif;background:var(--bg);color:#2d1a4a;font-
         <span class="total-dia-label">Total do dia (calculado automaticamente)</span>
         <span class="total-dia-valor" id="v-total-display">R$ 0,00</span>
       </div>
-      <div class="fg" style="grid-column:span 2"><label>Observacoes</label><textarea id="v-obs" placeholder="Observacoes do dia..."></textarea></div>
+      <div class="fg" style="grid-column:span 2"><label>Observações</label><textarea id="v-obs" placeholder="Observações do dia..."></textarea></div>
     </div>
     <div class="form-btns">
       <button class="btn-salvar" id="btn-sv" onclick="salvarVenda()">+ Registrar Fechamento</button>
-      <button class="btn-cancelar-edit" id="btn-cv" onclick="cancelarEditVenda()">Cancelar edicao</button>
+      <button class="btn-cancelar-edit" id="btn-cv" onclick="cancelarEditVenda()">Cancelar edição</button>
     </div>
   </div>
   <div class="table-wrap">
@@ -517,14 +583,14 @@ body{font-family:'Open Sans',sans-serif;background:var(--bg);color:#2d1a4a;font-
     </div>
     <div class="tscroll">
       <table class="dtable">
-        <thead><tr><th>Data</th><th>Pecas</th><th>Produtos</th><th>PIX</th><th>Dinheiro</th><th>Debito</th><th>Credito</th><th>Outros</th><th>Total do Dia</th><th>Obs</th><th>Acoes</th></tr></thead>
+        <thead><tr><th>Data</th><th>Peças</th><th>Produtos</th><th>PIX</th><th>Dinheiro</th><th>Debito</th><th>Credito</th><th>Outros</th><th>Total do Dia</th><th>Obs</th><th>Ações</th></tr></thead>
         <tbody id="tbody-v"></tbody>
       </table>
     </div>
     <div class="totals-bar">
       <div class="ti"><span>Total do Mes</span><span id="tv-total">R$ 0,00</span></div>
       <div class="ti"><span>Dias Registrados</span><span id="tv-dias">0</span></div>
-      <div class="ti"><span>Total de Pecas</span><span id="tv-pecas">0</span></div>
+      <div class="ti"><span>Total de Peças</span><span id="tv-pecas">0</span></div>
       <div class="ti"><span>Ticket Medio Diario</span><span id="tv-ticket">R$ 0,00</span></div>
       <div class="ti"><span>Melhor Dia</span><span id="tv-melhor">—</span></div>
     </div>
@@ -541,15 +607,15 @@ body{font-family:'Open Sans',sans-serif;background:var(--bg);color:#2d1a4a;font-
     </div>
     <div class="form-grid">
       <div class="fg"><label>Data *</label><input type="date" id="c-data"/></div>
-      <div class="fg" style="grid-column:span 2"><label>Descricao *</label><input type="text" id="c-desc" placeholder="Ex: Compra de estoque fornecedor"/></div>
+      <div class="fg" style="grid-column:span 2"><label>Descrição *</label><input type="text" id="c-desc" placeholder="Ex: Compra de estoque fornecedor"/></div>
       <div class="fg">
         <label>Categoria *</label>
         <select id="c-cat">
           <option value="">Selecione...</option>
           <option>Estoque</option><option>Aluguel</option><option>Energia</option>
-          <option>Internet</option><option>Funcionario</option><option>Embalagem</option>
-          <option>Trafego Pago</option><option>Brinde</option><option>Panfleto</option>
-          <option>Transporte</option><option>Manutencao</option><option>Outros</option>
+          <option>Internet</option><option>Funcionário</option><option>Embalagem</option>
+          <option>Tráfego Pago</option><option>Brinde</option><option>Panfleto</option>
+          <option>Transporte</option><option>Manutenção</option><option>Outros</option>
         </select>
       </div>
       <div class="fg"><label>Valor (R$) *</label><input type="number" id="c-valor" min="0" step="0.01" placeholder="0,00"/></div>
@@ -563,13 +629,13 @@ body{font-family:'Open Sans',sans-serif;background:var(--bg);color:#2d1a4a;font-
       </div>
       <div class="fg">
         <label>Tipo</label>
-        <select id="c-tipo"><option value="">Selecione...</option><option>Fixo</option><option>Variavel</option></select>
+        <select id="c-tipo"><option value="">Selecione...</option><option>Fixo</option><option>Variável</option></select>
       </div>
-      <div class="fg" style="grid-column:span 2"><label>Observacoes</label><textarea id="c-obs" placeholder="Observacoes adicionais..."></textarea></div>
+      <div class="fg" style="grid-column:span 2"><label>Observações</label><textarea id="c-obs" placeholder="Observações adicionais..."></textarea></div>
     </div>
     <div class="form-btns">
       <button class="btn-salvar" id="btn-sc" onclick="salvarCusto()">+ Registrar Custo</button>
-      <button class="btn-cancelar-edit" id="btn-cc" onclick="cancelarEditCusto()">Cancelar edicao</button>
+      <button class="btn-cancelar-edit" id="btn-cc" onclick="cancelarEditCusto()">Cancelar edição</button>
     </div>
   </div>
   <div class="table-wrap">
@@ -579,7 +645,7 @@ body{font-family:'Open Sans',sans-serif;background:var(--bg);color:#2d1a4a;font-
     </div>
     <div class="tscroll">
       <table class="dtable">
-        <thead><tr><th>Data</th><th>Descricao</th><th>Categoria</th><th>Valor</th><th>Pagamento</th><th>Tipo</th><th>Obs</th><th>Acoes</th></tr></thead>
+        <thead><tr><th>Data</th><th>Descrição</th><th>Categoria</th><th>Valor</th><th>Pagamento</th><th>Tipo</th><th>Obs</th><th>Ações</th></tr></thead>
         <tbody id="tbody-c"></tbody>
       </table>
     </div>
@@ -587,7 +653,7 @@ body{font-family:'Open Sans',sans-serif;background:var(--bg);color:#2d1a4a;font-
       <div class="ti"><span>Total Custos</span><span id="tc-total">R$ 0,00</span></div>
       <div class="ti"><span>Fixos</span><span id="tc-fixos">R$ 0,00</span></div>
       <div class="ti"><span>Variaveis</span><span id="tc-var">R$ 0,00</span></div>
-      <div class="ti"><span>Lancamentos</span><span id="tc-qtd">0</span></div>
+      <div class="ti"><span>Lançamentos</span><span id="tc-qtd">0</span></div>
     </div>
   </div>
   <div class="stitle">Resumo por Categoria</div>
@@ -599,7 +665,7 @@ body{font-family:'Open Sans',sans-serif;background:var(--bg);color:#2d1a4a;font-
   <div class="stitle">Cadastrar Produto</div>
   <div class="form-card">
     <div class="form-grid">
-      <div class="fg"><label>Codigo</label><input type="text" id="e-cod" placeholder="FIT-001"/></div>
+      <div class="fg"><label>Código</label><input type="text" id="e-cod" placeholder="FIT-001"/></div>
       <div class="fg" style="grid-column:span 2"><label>Nome do Produto *</label><input type="text" id="e-nome" placeholder="Ex: Legging Preta Cintura Alta"/></div>
       <div class="fg">
         <label>Categoria *</label>
@@ -620,8 +686,8 @@ body{font-family:'Open Sans',sans-serif;background:var(--bg);color:#2d1a4a;font-
         </select>
       </div>
       <div class="fg"><label>Qtd em Estoque *</label><input type="number" id="e-qtd" min="0" value="0"/></div>
-      <div class="fg"><label>Preco de Custo (R$)</label><input type="number" id="e-custo" min="0" step="0.01" placeholder="0,00"/></div>
-      <div class="fg"><label>Preco de Venda (R$)</label><input type="number" id="e-venda" min="0" step="0.01" placeholder="0,00"/></div>
+      <div class="fg"><label>Preço de Custo (R$)</label><input type="number" id="e-custo" min="0" step="0.01" placeholder="0,00"/></div>
+      <div class="fg"><label>Preço de Venda (R$)</label><input type="number" id="e-venda" min="0" step="0.01" placeholder="0,00"/></div>
     </div>
     <div class="form-btns"><button class="btn-salvar" onclick="salvarProduto()">+ Cadastrar Produto</button></div>
   </div>
@@ -633,7 +699,7 @@ body{font-family:'Open Sans',sans-serif;background:var(--bg);color:#2d1a4a;font-
     </div>
     <div class="tscroll">
       <table class="dtable">
-        <thead><tr><th>Codigo</th><th>Produto</th><th>Categoria</th><th>Cor</th><th>Tamanho</th><th>Qtd</th><th>Custo</th><th>Venda</th><th>Margem</th><th>Status</th><th></th></tr></thead>
+        <thead><tr><th>Código</th><th>Produto</th><th>Categoria</th><th>Cor</th><th>Tamanho</th><th>Qtd</th><th>Custo</th><th>Venda</th><th>Margem</th><th>Status</th><th></th></tr></thead>
         <tbody id="tbody-e"></tbody>
       </table>
     </div>
@@ -650,7 +716,7 @@ body{font-family:'Open Sans',sans-serif;background:var(--bg);color:#2d1a4a;font-
       <div class="rrow"><label>Lucro Estimado</label><span class="rval" id="r-lucro">R$ 0,00</span></div>
       <div class="rrow"><label>Margem Estimada</label><span class="rval" id="r-margem">0%</span></div>
       <div class="rrow"><label>Dias com Vendas</label><span class="rval" id="r-dias">0</span></div>
-      <div class="rrow"><label>Total de Pecas</label><span class="rval" id="r-pecas">0</span></div>
+      <div class="rrow"><label>Total de Peças</label><span class="rval" id="r-pecas">0</span></div>
       <div class="rrow"><label>Ticket Medio Diario</label><span class="rval" id="r-ticket">R$ 0,00</span></div>
       <div class="rrow"><label>Custos Fixos</label><span class="rval" id="r-fixos">R$ 0,00</span></div>
       <div class="rrow"><label>Custos Variaveis</label><span class="rval" id="r-var">R$ 0,00</span></div>
@@ -674,9 +740,9 @@ body{font-family:'Open Sans',sans-serif;background:var(--bg);color:#2d1a4a;font-
       <tr><td>Ticket Medio Diario (R$)</td><td><input type="number" id="m-ticket" placeholder="0,00" oninput="renderMetas()" step="0.01"/></td><td id="mr-ticket">—</td><td id="md-ticket">—</td><td id="ms-ticket">—</td></tr>
     </tbody>
   </table>
-  <div class="obs-box"><h4>Principais Observacoes</h4><textarea id="obs1" placeholder="Observacoes gerais do mes..." oninput="salvarObs()"></textarea></div>
+  <div class="obs-box"><h4>Principais Observações</h4><textarea id="obs1" placeholder="Observações gerais do mês..." oninput="salvarObs()"></textarea></div>
   <div class="obs-box"><h4>Pontos Positivos</h4><textarea id="obs2" placeholder="O que funcionou bem?" oninput="salvarObs()"></textarea></div>
-  <div class="obs-box"><h4>O que Melhorar</h4><textarea id="obs3" placeholder="O que pode melhorar no proximo mes?" oninput="salvarObs()"></textarea></div>
+  <div class="obs-box"><h4>O que Melhorar</h4><textarea id="obs3" placeholder="O que pode melhorar no próximo mês?" oninput="salvarObs()"></textarea></div>
 </section>
 
 
@@ -833,12 +899,18 @@ function fecharSetup() {}
 
 // ─── Tabs ─────────────────────────────────────────────────────
 function showTab(id, btn) {
-  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-  el('tab-'+id).classList.add('active');
+  const novoIdx = tabOrdem.indexOf(id);
+  const dir = novoIdx >= tabAtual ? 'slide-in-right' : 'slide-in-left';
+  tabAtual = novoIdx;
+  document.querySelectorAll('.tab-panel').forEach(p => { p.classList.remove('active','slide-in-right','slide-in-left'); });
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  const panel = el('tab-'+id);
+  panel.classList.add('active', dir);
   if (btn) btn.classList.add('active');
   if (id==='dashboard') renderDash();
   if (id==='resumo')    renderResumo();
+  setTimeout(() => panel.classList.remove(dir), 350);
+  setTimeout(ativarTilt, 400);
 }
 
 // ─── Mes ──────────────────────────────────────────────────────
@@ -892,7 +964,7 @@ function salvarVenda() {
   arr.push(buildVenda(uid(), data, total));
   arr.sort((a,b)=>a.data.localeCompare(b.data));
   setData('vendas', arr);
-  toast('Fechamento registrado!');
+  toast('Fechamento registrado!', 2800, true);
   haptic([30,20,30]);
   feedbackBotao('btn-sv');
   lancarParticulas(el('btn-sv'));
@@ -947,7 +1019,7 @@ function renderVendas(q='') {
     !q||[v.produtos,v.obs,fmtD(v.data)].some(x=>x&&x.toLowerCase().includes(q.toLowerCase()))
   );
   const tbody = el('tbody-v');
-  if (!arr.length) { tbody.innerHTML='<tr><td colspan="11" class="empty">Nenhum fechamento registrado neste mes.</td></tr>'; atualizarTotV([]); return; }
+  if (!arr.length) { tbody.innerHTML='<tr><td colspan="11" class="empty">Nenhum fechamento registrado neste mês.</td></tr>'; atualizarTotV([]); return; }
   tbody.innerHTML = arr.map(v=>`
     <tr>
       <td><strong>${fmtD(v.data)}</strong></td>
@@ -984,7 +1056,7 @@ function salvarCusto() {
   const arr=getData('custos');
   const obj={id:editCustoId||uid(),data,desc,cat,valor,pgto:el('c-pgto').value,tipo:el('c-tipo').value,obs:el('c-obs').value.trim()};
   if (editCustoId) { const idx=arr.findIndex(c=>c.id===editCustoId); if(idx>-1) arr[idx]=obj; toast('Custo atualizado!'); cancelarEditCusto(); }
-  else { arr.push(obj); arr.sort((a,b)=>a.data.localeCompare(b.data)); toast('Custo registrado!'); haptic([30,20,30]); feedbackBotao('btn-sc'); lancarParticulas(el('btn-sc')); resetFormCusto(); }
+  else { arr.push(obj); arr.sort((a,b)=>a.data.localeCompare(b.data)); toast('Custo registrado!', 2800, true); haptic([30,20,30]); feedbackBotao('btn-sc'); lancarParticulas(el('btn-sc')); resetFormCusto(); }
   setData('custos',arr);
 }
 
@@ -1018,8 +1090,8 @@ function removerCusto(id) {
 function renderCustos(q='') {
   const arr=getData('custos').filter(c=>!q||[c.desc,c.cat,c.pgto,c.obs,fmtD(c.data)].some(x=>x&&x.toLowerCase().includes(q.toLowerCase())));
   const tbody=el('tbody-c');
-  if (!arr.length) { tbody.innerHTML='<tr><td colspan="8" class="empty">Nenhum custo registrado neste mes.</td></tr>'; atualizarTotC([]); renderCatCards([]); return; }
-  const tb=t=>t==='Fixo'?`<span class="badge b-fixo">Fixo</span>`:t==='Variavel'?`<span class="badge b-variavel">Variavel</span>`:'—';
+  if (!arr.length) { tbody.innerHTML='<tr><td colspan="8" class="empty">Nenhum custo registrado neste mês.</td></tr>'; atualizarTotC([]); renderCatCards([]); return; }
+  const tb=t=>t==='Fixo'?`<span class="badge b-fixo">Fixo</span>`:t==='Variavel'?`<span class="badge b-variavel">Variável</span>`:'—';
   tbody.innerHTML=arr.map(c=>`<tr>
     <td><strong>${fmtD(c.data)}</strong></td><td>${c.desc}</td><td>${c.cat}</td>
     <td style="color:#dc3545;font-weight:700">${BRL(c.valor)}</td>
@@ -1041,7 +1113,7 @@ function atualizarTotC(arr) {
 }
 
 function renderCatCards(arr) {
-  const cats=['Estoque','Aluguel','Energia','Internet','Funcionario','Embalagem','Trafego Pago','Brinde','Transporte','Manutencao','Outros'];
+  const cats=['Estoque','Aluguel','Energia','Internet','Funcionário','Embalagem','Tráfego Pago','Brinde','Transporte','Manutenção','Outros'];
   const t={}; cats.forEach(c=>t[c]=0); arr.forEach(c=>{if(t[c.cat]!==undefined)t[c.cat]+=c.valor;});
   const total=Object.values(t).reduce((s,v)=>s+v,0);
   el('cat-cards').innerHTML=cats.filter(c=>t[c]>0).map(cat=>`
@@ -1067,7 +1139,7 @@ function salvarProduto() {
   ['e-cod','e-nome','e-cor'].forEach(id=>el(id).value='');
   ['e-cat','e-tam'].forEach(id=>el(id).value='');
   el('e-qtd').value='0'; el('e-custo').value=''; el('e-venda').value='';
-  toast('Produto cadastrado!');
+  toast('Produto cadastrado!', 2800, true);
 }
 
 function removerProduto(id) {
@@ -1098,10 +1170,10 @@ function renderEstCards(arr) {
   const baixo=arr.filter(p=>p.status==='BAIXO ESTOQUE').length;
   const esgo=arr.filter(p=>p.status==='ESGOTADO').length;
   el('est-cards').innerHTML=`
-    <div class="card c-verde"><div class="clabel">Disponiveis</div><div class="cval pos">${disp}</div><div class="csub">de ${arr.length} produtos</div></div>
-    <div class="card c-dourado"><div class="clabel">Baixo Estoque</div><div class="cval" style="color:${baixo>0?'#856404':'#155724'}">${baixo}</div><div class="csub">atencao recomendada</div></div>
+    <div class="card c-verde"><div class="clabel">Disponíveis</div><div class="cval pos">${disp}</div><div class="csub">de ${arr.length} produtos</div></div>
+    <div class="card c-dourado"><div class="clabel">Baixo Estoque</div><div class="cval" style="color:${baixo>0?'#856404':'#155724'}">${baixo}</div><div class="csub">atenção recomendada</div></div>
     <div class="card c-verm"><div class="clabel">Esgotados</div><div class="cval neg">${esgo}</div><div class="csub">repor urgente</div></div>
-    <div class="card"><div class="clabel">Valor do Estoque</div><div class="cval" style="font-size:17px">${BRL(arr.reduce((s,p)=>s+p.custo*p.qtd,0))}</div><div class="csub">a preco de custo</div></div>`;
+    <div class="card"><div class="clabel">Valor do Estoque</div><div class="cval" style="font-size:17px">${BRL(arr.reduce((s,p)=>s+p.custo*p.qtd,0))}</div><div class="csub">a preço de custo</div></div>`;
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -1115,11 +1187,11 @@ function renderDash() {
   const melhor=V.length?V.reduce((a,b)=>b.total>a.total?b:a):null;
   el('dash-cards').innerHTML=`
     <div class="card"><div class="clabel">Total Vendido</div><div class="cval" id="dc-tv"></div><div class="csub">${dias} dia${dias!==1?'s':''} com vendas</div></div>
-    <div class="card c-verm"><div class="clabel">Total Custos</div><div class="cval neg" id="dc-tc"></div><div class="csub">${C.length} lancamento${C.length!==1?'s':''}</div></div>
+    <div class="card c-verm"><div class="clabel">Total Custos</div><div class="cval neg" id="dc-tc"></div><div class="csub">${C.length} lançamento${C.length!==1?'s':''}</div></div>
     <div class="card ${lucro>=0?'c-verde':'c-verm'}"><div class="clabel">Lucro Estimado</div><div class="cval ${lucro>=0?'pos':'neg'}" id="dc-lucro"></div><div class="csub">Margem: ${margem.toFixed(1)}%</div></div>
     <div class="card c-dourado"><div class="clabel">Ticket Medio Diario</div><div class="cval" id="dc-ticket"></div><div class="csub">por dia registrado</div></div>
-    <div class="card"><div class="clabel">Dias com Vendas</div><div class="cval" id="dc-dias"></div><div class="csub">${pecas} pecas vendidas</div></div>
-    <div class="card c-lilas"><div class="clabel">Total de Pecas</div><div class="cval" id="dc-pecas"></div><div class="csub">no mes</div></div>
+    <div class="card"><div class="clabel">Dias com Vendas</div><div class="cval" id="dc-dias"></div><div class="csub">${pecas} peças vendidas</div></div>
+    <div class="card c-lilas"><div class="clabel">Total de Peças</div><div class="cval" id="dc-pecas"></div><div class="csub">no mes</div></div>
     <div class="card c-verde"><div class="clabel">Melhor Dia</div><div class="cval" style="font-size:16px">${melhor?fmtD(melhor.data):'—'}</div><div class="csub">${melhor?BRL(melhor.total):''}</div></div>
     <div class="card"><div class="clabel">Margem Estimada</div><div class="cval ${margem>=0?'pos':'neg'}" id="dc-margem"></div><div class="csub">lucro / vendas</div></div>`;
   animarNumero(el('dc-tv'), tv, true);
@@ -1226,6 +1298,56 @@ function salvarMetas() {
 }
 
 // ─── Animacoes ───────────────────────────────────────────────
+
+// 1. Card Tilt 3D
+function ativarTilt() {
+  document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - .5;
+      const y = (e.clientY - r.top) / r.height - .5;
+      card.style.transform = `perspective(600px) rotateY(${x*14}deg) rotateX(${-y*14}deg) translateZ(8px) scale(1.02)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+}
+
+// 5. Slide entre abas
+let tabAtual = 0;
+const tabOrdem = ['dashboard','vendas','custos','estoque','resumo'];
+
+// 6. Spring physics + 7. Odometro
+function animarNumero(elRef, valorFinal, isMoeda=false) {
+  if (!elRef) return;
+  let cur = 0;
+  const dur = 900;
+  const start = performance.now();
+  function spring(t) {
+    // easeOutElastic suave
+    const c4 = (2*Math.PI)/4.5;
+    return t===0?0:t===1?1:Math.pow(2,-8*t)*Math.sin((t*10-0.75)*c4)+1;
+  }
+  function tick(now) {
+    const t = Math.min((now - start) / dur, 1);
+    cur = valorFinal * spring(t);
+    if (elRef) elRef.textContent = isMoeda ? BRL(cur) : Math.round(cur);
+    if (t < 1) requestAnimationFrame(tick);
+    else if (elRef) elRef.textContent = isMoeda ? BRL(valorFinal) : valorFinal;
+  }
+  requestAnimationFrame(tick);
+}
+
+// 8. Toast com checkmark animado
+function toast(msg, dur=2800, isSuccess=false) {
+  const t = el('toast');
+  t.innerHTML = isSuccess
+    ? `<svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="#4cfa7e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline class="toast-check" points="4 12 9 17 20 7"/></svg><span>${msg}</span>`
+    : `<span>${msg}</span>`;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), dur);
+}
 
 // 6. Ripple
 function addRipple(e) {
@@ -1337,6 +1459,7 @@ function renderAll() {
   const mEl=el('mesSel'); if(mEl) mEl.value=mes;
   renderVendas();renderCustos();renderEstoque();renderDash();
   setTimeout(setupReveal, 100);
+  setTimeout(ativarTilt, 400);
 }
 
 // ─── Init ─────────────────────────────────────────────────────
