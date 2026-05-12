@@ -301,6 +301,48 @@ body{font-family:'Open Sans',sans-serif;background:var(--bg);color:#2d1a4a;font-
 @keyframes particle{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--tx),var(--ty)) scale(0);opacity:0}}
 .particle{position:fixed;width:8px;height:8px;border-radius:50%;pointer-events:none;z-index:99997;animation:particle .6s ease forwards}
 
+/* ── DESKTOP ── */
+@media(min-width:769px){
+  .form-card{padding:28px 32px}
+  .form-grid{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+  .fg input,.fg select,.fg textarea{min-height:50px;font-size:15px;padding:12px 16px;border-radius:10px}
+  .fg textarea{min-height:80px}
+  .fg label{font-size:12px;margin-bottom:6px}
+  .total-dia-box{padding:18px 22px}
+  .total-dia-valor{font-size:34px}
+  .btn-salvar{padding:14px 32px;font-size:14px;min-height:52px;max-width:280px}
+  .btn-cancelar-edit{min-height:52px;font-size:14px}
+  .form-btns{margin-top:20px;gap:12px}
+  .form-title{font-size:15px;margin-bottom:20px;padding-bottom:14px}
+  .instrucao{font-size:14px;padding:16px 24px;border-radius:10px;margin-bottom:28px}
+  .stitle{font-size:12px;padding:12px 20px;margin-bottom:22px}
+  .table-bar{padding:14px 22px}
+  .table-bar-title{font-size:13px}
+  .busca{width:240px;font-size:13px;padding:9px 18px}
+  .dtable th{font-size:11px;padding:13px 16px}
+  .dtable td{font-size:14px;padding:12px 16px}
+  .ti span:last-child{font-size:17px}
+  .ti span:first-child{font-size:11px}
+  .ti{padding:18px 24px}
+  .rrow{padding:13px 22px}
+  .rrow label{font-size:13px}
+  .rval{font-size:16px}
+  .rbox-title{font-size:12px;padding:14px 22px}
+  .resumo-grid{gap:28px}
+  .metas-table th{font-size:11px;padding:13px 18px}
+  .metas-table td{font-size:14px;padding:12px 18px}
+  .metas-table input[type=number]{width:160px;font-size:15px;padding:8px 12px}
+  .obs-box{padding:22px 28px}
+  .obs-box h4{font-size:12px;margin-bottom:14px}
+  .obs-box textarea{min-height:100px;font-size:14px;padding:12px 16px}
+  .cbox{padding:24px}
+  .cbox h4{font-size:12px;margin-bottom:16px;padding-bottom:12px}
+  .cbox canvas{max-height:240px}
+  .est-cards{gap:16px}
+  .hmes{font-size:13px;height:38px;padding:6px 12px}
+  .hbtn{height:38px;font-size:13px;padding:8px 18px}
+}
+
 /* ── MOBILE ── */
 @media(max-width:600px){
   /* Header compacto: logo à esquerda, itens essenciais à direita em 1 linha */
