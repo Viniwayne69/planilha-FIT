@@ -692,13 +692,7 @@ function toast(msg, dur=2600) {
 }
 
 // ─── Setup modal ─────────────────────────────────────────────
-function abrirSetup() {
-  el('overlay').classList.remove('hidden');
-  const cfg = JSON.parse(localStorage.getItem('fjj_fb_config')||'{}');
-  if (cfg.databaseURL) el('fb-url').value = cfg.databaseURL;
-  if (cfg.apiKey)      el('fb-key').value = cfg.apiKey;
-}
-function fecharSetup() { el('overlay').classList.add('hidden'); }
+function fecharSetup() {}
 
 // ─── Tabs ─────────────────────────────────────────────────────
 function showTab(id, btn) {
