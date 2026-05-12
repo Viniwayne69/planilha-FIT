@@ -82,27 +82,23 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:#2d1a4a;
 /* ── HEADER ── */
 .header{
   background:linear-gradient(135deg,var(--roxo),var(--violeta));
-  color:#fff;padding:0 24px;display:flex;align-items:center;
-  gap:16px;height:64px;box-shadow:0 2px 16px rgba(75,0,130,.35);
+  color:#fff;padding:0 20px;display:flex;align-items:center;
+  gap:12px;height:60px;box-shadow:0 2px 16px rgba(75,0,130,.35);
   position:sticky;top:0;z-index:200;
 }
-.hlogo{font-size:20px;font-weight:800;letter-spacing:.12em;color:var(--dourado);text-transform:uppercase}
-.hsub{font-size:11px;opacity:.75;letter-spacing:.05em;margin-top:1px}
-.hright{margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.hmes{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.28);color:#fff;padding:7px 10px;border-radius:8px;font-size:12px;min-height:36px}
+.hlogo{font-size:20px;font-weight:800;letter-spacing:.12em;color:var(--dourado);text-transform:uppercase;white-space:nowrap}
+.hright{margin-left:auto;display:flex;gap:8px;align-items:center;flex-shrink:0}
+.huser{font-size:12px;font-weight:700;color:var(--dourado-claro);white-space:nowrap}
+.hmes{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.28);color:#fff;padding:6px 8px;border-radius:8px;font-size:12px;height:34px}
 .hmes option{color:#2d1a4a}
-.hbtn{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;padding:7px 14px;border-radius:20px;cursor:pointer;font-size:12px;min-height:36px;font-weight:600;transition:.2s;white-space:nowrap}
+.hbtn{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;padding:6px 14px;border-radius:20px;cursor:pointer;font-size:12px;height:34px;font-weight:600;transition:.2s;white-space:nowrap}
 .hbtn:hover{background:rgba(255,255,255,.28)}
-.hbtn.config-btn{background:var(--dourado);border-color:var(--dourado);color:var(--roxo);font-weight:800}
-.hbtn.config-btn:hover{background:#c9a200}
-.conn-badge{
-  display:flex;align-items:center;gap:6px;padding:5px 12px;
-  border:1px solid rgba(255,255,255,.2);border-radius:20px;font-size:11px;font-weight:700;
-}
+.conn-badge{display:flex;align-items:center;gap:5px;padding:4px 10px;border:1px solid rgba(255,255,255,.2);border-radius:20px;font-size:11px;font-weight:700;white-space:nowrap}
 .conn-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;transition:.4s}
 .conn-dot.on{background:#4cfa7e;box-shadow:0 0 7px #4cfa7e}
 .conn-dot.off{background:rgba(255,255,255,.35)}
 .conn-dot.sync{background:var(--dourado);animation:pulse .8s infinite}
+.conn-label{}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 
 /* ── TABS ── */
@@ -244,43 +240,46 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:#2d1a4a;
 
 /* ── MOBILE ── */
 @media(max-width:600px){
-  /* Header em duas linhas */
-  .header{
-    padding:8px 14px;height:auto;flex-wrap:wrap;gap:8px;
-    display:grid;
-    grid-template-columns:1fr auto;
-    grid-template-rows:auto auto;
-    align-items:center;
-  }
-  .header > div:first-child{grid-column:1;grid-row:1}
-  .hright{
-    grid-column:2;grid-row:1 / span 2;
-    flex-direction:column;align-items:flex-end;gap:6px;margin-left:0;
-  }
-  .hlogo{font-size:16px}
-  .hsub{display:none}
-  .conn-badge{padding:4px 8px}
-  .conn-badge span:last-child{display:none}
-  .hmes{font-size:11px;padding:6px 8px;min-height:32px}
-  .hbtn{padding:6px 12px;font-size:11px;min-height:32px}
-  .login-user{font-size:11px}
+  /* Header compacto: logo à esquerda, itens essenciais à direita em 1 linha */
+  .header{padding:0 12px;height:52px;gap:8px}
+  .hlogo{font-size:15px;letter-spacing:.08em}
+  .hright{gap:6px}
+  .conn-label{display:none}
+  .conn-badge{padding:4px 6px}
+  .hmes{font-size:11px;padding:4px 6px;height:30px;max-width:90px}
+  .huser{display:none}
+  .hbtn-exp{display:none}
+  .hbtn-sair{padding:4px 12px;height:30px;font-size:11px}
 
   /* Tabs */
-  .tab-btn{padding:10px 11px;font-size:11px}
+  .tabs-nav{padding:0 8px}
+  .tab-btn{padding:11px 10px;font-size:11px}
 
   /* Paineis */
-  .tab-panel{padding:12px}
+  .tab-panel{padding:12px 10px}
 
-  /* Cards */
-  .cards{grid-template-columns:1fr 1fr}
+  /* Cards 2 colunas */
+  .cards{grid-template-columns:1fr 1fr;gap:10px}
+  .card{padding:14px 12px}
   .cval{font-size:17px}
   .clabel{font-size:9px}
+  .csub{font-size:10px}
 
-  /* Forms */
-  .form-grid{grid-template-columns:1fr}
+  /* Forms 1 coluna */
+  .form-card{padding:14px}
+  .form-grid{grid-template-columns:1fr;gap:10px}
+  .fg input,.fg select,.fg textarea{font-size:16px}
   .total-dia-box{grid-column:span 1}
   .form-btns{flex-direction:column}
   .btn-salvar{max-width:100%}
+
+  /* Tabelas */
+  .table-bar{padding:10px 12px}
+
+  /* Totals bar */
+  .totals-bar{flex-direction:column}
+  .ti{border-right:none;border-bottom:1px solid rgba(255,255,255,.15);padding:10px 14px}
+  .ti:last-child{border-bottom:none}
 
   /* Charts */
   .charts-grid{grid-template-columns:1fr}
@@ -288,17 +287,16 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:#2d1a4a;
   /* Resumo */
   .resumo-grid{grid-template-columns:1fr}
 
-  /* Totals bar */
-  .totals-bar{flex-direction:column}
-  .ti{border-right:none;border-bottom:1px solid rgba(255,255,255,.15)}
-  .ti:last-child{border-bottom:none}
+  /* Instrucao */
+  .instrucao{font-size:12px;padding:10px 14px}
 
   /* Login */
-  .login-box{padding:32px 24px}
+  .login-box{padding:32px 22px}
   .login-logo{font-size:22px}
+  .login-tagline{font-size:11px}
 
   /* Boas vindas */
-  .bv-texto{font-size:clamp(28px,10vw,48px)}
+  .bv-texto{font-size:clamp(28px,9vw,52px)}
 }
 </style>
 </head>
@@ -328,14 +326,11 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:#2d1a4a;
 
 <!-- HEADER -->
 <header class="header">
-  <div>
-    <div class="hlogo">FITTRAJJE</div>
-    <div class="hsub">Controle Financeiro em Tempo Real</div>
-  </div>
+  <div class="hlogo">FITTRAJJE</div>
   <div class="hright">
     <div class="conn-badge" id="conn-badge">
       <span class="conn-dot off" id="conn-dot"></span>
-      <span id="conn-text">Desconectado</span>
+      <span class="conn-label" id="conn-text">Desconectado</span>
     </div>
     <select class="hmes" id="mesSel" onchange="mudarMes()">
       <option value="2025-01">Jan 2025</option><option value="2025-02">Fev 2025</option>
@@ -351,9 +346,9 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:#2d1a4a;
       <option value="2026-09">Set 2026</option><option value="2026-10">Out 2026</option>
       <option value="2026-11">Nov 2026</option><option value="2026-12">Dez 2026</option>
     </select>
-    <span class="login-user" id="header-usuario"></span>
-    <button class="hbtn" onclick="exportar()">Exportar</button>
-    <button class="hbtn" onclick="sair()">Sair</button>
+    <span class="huser" id="header-usuario"></span>
+    <button class="hbtn hbtn-exp" onclick="exportar()">Exportar</button>
+    <button class="hbtn hbtn-sair" onclick="sair()">Sair</button>
     <input type="file" id="importFile" accept=".json" style="display:none" onchange="importar(event)"/>
   </div>
 </header>
