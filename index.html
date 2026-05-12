@@ -410,8 +410,10 @@ body{font-family:'Open Sans',sans-serif;background:var(--bg);color:#2d1a4a;font-
 }
 
 /* ── MOBILE ── */
-@media(max-width:600px){
-  /* Header compacto: logo à esquerda, itens essenciais à direita em 1 linha */
+@media(max-width:768px){
+  body{overflow-x:hidden}
+
+  /* Header compacto */
   .header{padding:0 12px;height:52px;gap:8px}
   .hlogo{font-size:15px;letter-spacing:.08em}
   .hright{gap:6px}
@@ -427,7 +429,7 @@ body{font-family:'Open Sans',sans-serif;background:var(--bg);color:#2d1a4a;font-
   .tab-btn{padding:11px 10px;font-size:11px}
 
   /* Paineis */
-  .tab-panel{padding:12px 10px}
+  .tab-panel{padding:14px 10px;overflow-x:hidden}
 
   /* Cards 2 colunas no mobile */
   .cards{grid-template-columns:1fr 1fr;gap:10px}
@@ -435,13 +437,12 @@ body{font-family:'Open Sans',sans-serif;background:var(--bg);color:#2d1a4a;font-
   .cval{font-size:18px}
   .clabel{font-size:9px}
   .csub{font-size:10px}
-  .charts-grid{grid-template-columns:1fr}
-  .tab-panel{padding:14px 12px}
 
   /* Forms 1 coluna */
-  .form-card{padding:14px}
-  .form-grid{grid-template-columns:1fr;gap:10px}
-  .fg input,.fg select,.fg textarea{font-size:16px}
+  .form-card{padding:14px;overflow:hidden}
+  .form-grid{grid-template-columns:1fr !important;gap:10px}
+  .fg{min-width:0;width:100%}
+  .fg input,.fg select,.fg textarea{font-size:16px;width:100%;min-width:0;box-sizing:border-box}
   .total-dia-box{grid-column:span 1}
   .form-btns{flex-direction:column}
   .btn-salvar{max-width:100%}
