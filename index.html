@@ -613,7 +613,6 @@ function iniciarFirebase(config) {
 
     setupListeners();
     fecharSetup();
-    toast('Firebase conectado! Dados sincronizados em tempo real.');
   } catch(e) {
     toast('Erro ao conectar: ' + e.message);
     console.error(e);
